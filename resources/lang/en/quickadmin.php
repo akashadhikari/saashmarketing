@@ -45,7 +45,13 @@ return [
 			'email' => 'Email',
 		],
 	],
-	
+	'services' => [
+		'title' => 'Services',
+		'fields' => [
+			'title' => 'Title',
+			'is_active' => 'Is Active',
+		],
+	],
 	'working-hours' => [
 		'title' => 'Working hours',
 		'fields' => [

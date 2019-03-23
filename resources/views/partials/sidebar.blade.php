@@ -57,15 +57,24 @@
                     <i class="fa fa-suitcase"></i>
                     <span>@lang('quickadmin.employees.title')</span>
                 </a>
-            </li>@endcan
-            
+            </li>
+            @endcan
+
+            <li>
+                <a href="{{ route('admin.services.index') }}">
+                    <i class="fa fa-gear"></i>
+                    <span>@lang('quickadmin.services.title')</span>
+                </a>
+            </li>
+
             @can('working_hour_access')
             <li>
                 <a href="{{ route('admin.working_hours.index') }}">
                     <i class="fa fa-hourglass-1"></i>
                     <span>@lang('quickadmin.working-hours.title')</span>
                 </a>
-            </li>@endcan
+            </li>
+            @endcan
             
             @can('appointment_access')
             <li>
@@ -74,13 +83,6 @@
                     <span>@lang('quickadmin.appointments.title')</span>
                 </a>
             </li>@endcan
-            
-
-            
-
-            
-
-
 
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
                 <a href="{{ route('auth.change_password') }}">

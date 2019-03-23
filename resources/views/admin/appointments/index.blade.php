@@ -59,7 +59,13 @@
                                 <td field-key='client_name'>{{ $appointment->first_name .' '. $appointment->last_name }}</td>
                                 <td field-key='email'>{{ $appointment->email }}</td>
                                 <td field-key='phone'>{{  $appointment->phone }}</td>
-                                <td >{{ $appointment->service->title ?? '' }}</td>
+                                <td>
+                                    <ul>
+                                            @foreach ($appointment->services as $service)
+                                                <li>{{ $service->info->title ?? null}}</li>
+                                            @endforeach
+                                    </ul>
+                                </td>
                                 <td field-key='start_time'>{{ $appointment->start_time }}</td>
                                 <td field-key='finish_time'>{{ $appointment->finish_time }}</td>
                                 <td field-key='budget'>{!! $appointment->budget !!}</td>

@@ -110,7 +110,7 @@ class Appointment extends Model
         return $this->belongsTo(Employee::class, 'employee_id')->withTrashed();
     }
     
-    public function service(){
-        return $this->belongsTo(Service::class,'service_id');
+    public function services(){
+        return $this->hasMany(AppointmentService::class,'appointment_id');
     }
 }

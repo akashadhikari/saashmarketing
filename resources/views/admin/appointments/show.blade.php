@@ -35,7 +35,13 @@
                         </tr>
                         <tr>
                             <th>Interested In</th>
-                            <td>{{ $appointment->service->title ?? null}}</td>
+                            <td>
+                                    <ul>
+                                            @foreach ($appointment->services as $service)
+                                                <li>{{ $service->info->title ?? null}}</li>
+                                            @endforeach
+                                    </ul>
+                            </td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.appointments.fields.budget')</th>

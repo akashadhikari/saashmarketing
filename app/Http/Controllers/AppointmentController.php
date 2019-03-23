@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Appointment;
 use App\Service;
 use App\Mail\AppointMail;
+use App\AppointmentService;
 
 class AppointmentController extends Controller
 {
@@ -29,11 +30,24 @@ class AppointmentController extends Controller
             'service_id' => 'required',
             'budget' => 'required|numeric',
         ]);
-
-        $data = $request->except('_token');
+        
+        
+        $data = $request->except('_token','service_id');
+        
+        $services = $request->get('service_id');
 
         $appointment = Appointment::create($data);
 
+        if(count($services) > 0){
+            AppointmentService::where('appointment_id',$appointment->id)->delete();
+
+            foreach($services as $serviceId){
+                AppointmentService::create([
+                    'appointment_id' => $appointment->id,
+                    'service_id' => $serviceId
+                ]);
+            }
+        }
         Mail::send(new AppointMail($appointment));
         
         return back()->withSuccess('Appointment has been sceduled successfully. We will contact you soon.');

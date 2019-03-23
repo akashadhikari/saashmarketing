@@ -17,7 +17,6 @@ class Create1550517038AppointmentsTable extends Migration
                 $table->increments('id');
                 $table->unsignedInteger('client_id')->nullable();
                 $table->unsignedInteger('employee_id')->nullable();
-                $table->unsignedInteger('service_id')->nullable();
                 $table->string('first_name')->nullable();
                 $table->string('last_name')->nullable();
                 $table->string('email')->nullable();

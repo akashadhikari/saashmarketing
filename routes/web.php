@@ -54,9 +54,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('appointments_restore/{id}', ['uses' => 'Admin\AppointmentsController@restore', 'as' => 'appointments.restore']);
     Route::delete('appointments_perma_del/{id}', ['uses' => 'Admin\AppointmentsController@perma_del', 'as' => 'appointments.perma_del']);
 
-
-
- 
+    Route::get('/services', 'Admin\ServiceController@index')->name('services.index');
+    Route::get('/services/create', 'Admin\ServiceController@create')->name('services.create');
+    Route::post('/services/create', 'Admin\ServiceController@store')->name('services.store');
+    Route::get('/services/{id}/show', 'Admin\ServiceController@create')->name('services.show');
+    Route::delete('/services/{id}/delete', 'Admin\ServiceController@destroy')->name('services.destroy');
 });
 
 Route::get('/custom', ['uses' => 'CustomController@index', 'as' => 'custom']);

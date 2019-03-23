@@ -93,14 +93,14 @@
                                                             <div class="col-md-12" style="padding-left:20px;">
                                                                     @foreach ($services as $service)
                                                                     <div class="radio">
-                                                                    <input type="radio" name="service_id" id="sr{{ $service->id }}" value="{{ $service->id }}">
+                                                                    <input type="checkbox" name="service_id[]" id="sr{{ $service->id }}" value="{{ $service->id }}">
                                                                             <label for="sr{{$service->id }}">{{ $service->title }}</label>
                                                                         </div>
                                                                     @endforeach
                                                             </div>
                                                             @if($errors->has('service'))
                                                                 <span class="help-block">
-                                                                  Please choose option from services above.
+                                                                  Please choose at leaset one service from list above.
                                                                 </span>
                                                             @endif
                                                     </div>
